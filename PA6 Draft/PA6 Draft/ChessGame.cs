@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -208,7 +209,8 @@ namespace PA6_Draft
             result += centisecString;
             return result;
         }
-        public ChessGame(int timeLimit,int increment,string player1,string player2){
+        public ChessGame(int timeLimit,int increment,string player1,string player2)
+        {
             WLimit = BLimit= timeLimit * 60000;
             Increment = increment * 1000;
             Player1Name = player1;
@@ -239,6 +241,9 @@ namespace PA6_Draft
             Board[3][7].Occupant = Piece.WQUEEN;
             Board[4][7].Occupant = Piece.WKING;
             Moves = new List<Move>();
+            SoundPlayer soundPlayer = new SoundPlayer(@"Resources\startgame.wav");
+            soundPlayer.Load();
+            soundPlayer.Play();
 
         }
         private bool IsCheckmate(bool whiteKing)
@@ -250,6 +255,9 @@ namespace PA6_Draft
                 if (TryLegalMove(move,whiteKing))
                     return false;
             }
+            SoundPlayer soundPlayer = new SoundPlayer(@"Resources\slayer.wav");
+            soundPlayer.Load();
+            soundPlayer.Play();
             return true; 
         }
         private bool IsStalemate(bool whiteKing)
@@ -304,6 +312,9 @@ namespace PA6_Draft
                             all.Add(move);
                     }
                 }
+            SoundPlayer soundPlayer = new SoundPlayer(@"Resources\MOVE.wav");
+            soundPlayer.Load();
+            soundPlayer.Play();
             return all;
         }
         private bool LegalMove(Move move,bool ignoreTurn)//Method has no side-effects! It checks whether move is legal. It ignores checks/checkmates/stalemates
