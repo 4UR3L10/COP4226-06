@@ -173,6 +173,8 @@ namespace PA6_Draft
         private Square EnPassant = null;
         private Castle CastlePermissions = Castle.BLONG|Castle.WLONG|Castle.BSHORT|Castle.WSHORT;
         internal bool WhiteTurn = true;
+        internal bool IsCheckmateFlag = false;
+        internal bool IsStalemateFlag = false;
         internal long WLimit;
         internal long BLimit;
         internal string Player1Name;
@@ -791,7 +793,9 @@ namespace PA6_Draft
             else
                 BlackTimeLimit = TimeToString(BLimit += Increment);
             move.Checkmate = IsCheckmate(!WhiteTurn);
+            IsCheckmateFlag = move.Checkmate;
             move.Stalemate = IsStalemate(!WhiteTurn);
+            IsStalemateFlag = move.Stalemate;
             move.Check = IsCheck(!WhiteTurn) && !move.Checkmate;
             Moves.Add(move);
             WhiteTurn = !WhiteTurn;
