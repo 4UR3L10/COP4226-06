@@ -55,6 +55,9 @@ namespace PA6_Draft
             // Initializing the Timers.
             this.Player2Time.Text = Game.BlackTimeLimit;
             this.Player1Time.Text = Game.WhiteTimeLimit;
+
+            // Stoping The Timer So It Starts In the First White Move .
+            MainTimer.Stop();
         }
         private object Game_Promote(Move move)
         {
@@ -88,10 +91,13 @@ namespace PA6_Draft
             int Y = e.Y / (2 * sizeUnit);
             bool Success = Game.Move(new Move(Picked.File - 'a', 8 - Picked.Rank, X, Y));
 
+            // Start Timer.
+            MainTimer.Start();
+
             if (Success)
             {
                 Dropped = new Square(Game.Board[X][Y].Rank, Game.Board[X][Y].File, Game.Board[X][Y].Occupant);
-
+                
                 // Data Binding - Updating the List When A Move Is Valid.
                 listBox1.Items.Add(Game.Moves[Game.Moves.Count - 1]); 
             }
