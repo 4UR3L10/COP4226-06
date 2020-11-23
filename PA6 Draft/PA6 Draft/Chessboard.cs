@@ -87,12 +87,17 @@ namespace PA6_Draft
             int X = e.X / (2 * sizeUnit);
             int Y = e.Y / (2 * sizeUnit);
             bool Success = Game.Move(new Move(Picked.File - 'a', 8 - Picked.Rank, X, Y));
-            if(Success)
-                Dropped = new Square(Game.Board[X][Y].Rank,
-                                    Game.Board[X][Y].File,
-                                    Game.Board[X][Y].Occupant);
+
+            if (Success)
+            {
+                Dropped = new Square(Game.Board[X][Y].Rank, Game.Board[X][Y].File, Game.Board[X][Y].Occupant);
+
+                // Data Binding - Updating the List When A Move Is Valid.
+                listBox1.Items.Add(Game.Moves[Game.Moves.Count - 1]); 
+            }
             Picked.Occupant = Piece.NONE ;
             Board.Invalidate();
+
         }
 
         private void Board_MouseMove(object sender, MouseEventArgs e)
@@ -110,8 +115,7 @@ namespace PA6_Draft
                 if (e.Y < 0)
                     PickedLocation.Y = -sizeUnit;
             }
-            Board.Invalidate();
-
+            Board.Invalidate();            
         }
         private void Board_Paint(object sender, PaintEventArgs e)
         {
