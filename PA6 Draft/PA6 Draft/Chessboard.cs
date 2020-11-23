@@ -12,6 +12,7 @@ namespace PA6_Draft
 {
     public partial class Chessboard : Form
     {
+        internal bool TimeFlag = false;
         private Brush LightColor;
         private Brush DarkColor;
         private Brush Highlighted;
@@ -91,13 +92,33 @@ namespace PA6_Draft
             int Y = e.Y / (2 * sizeUnit);
             bool Success = Game.Move(new Move(Picked.File - 'a', 8 - Picked.Rank, X, Y));
 
-            // Start Timer.
-            MainTimer.Start();
+            if(TimeFlag == false)
+            {
+                // Start Timer.
+                MainTimer.Start();
+                TimeFlag = true;
+            }
+
 
             if (Success)
             {
                 Dropped = new Square(Game.Board[X][Y].Rank, Game.Board[X][Y].File, Game.Board[X][Y].Occupant);
-                
+
+                // If there is a Checkmate or Stalemate stop the time.
+                if (Game.IsCheckmateFlag || Game.IsStalemateFlag)
+                {
+                    MainTimer.Stop();
+
+                    if(Game.IsCheckmateFlag)
+                    {
+                        MessageBox.Show("Game Have Finished: Checkmate");
+                    }
+                    else if(Game.IsStalemateFlag)
+                    {
+                        MessageBox.Show("Game Have Finished: Stalemate");
+                    }
+                }
+
                 // Data Binding - Updating the List When A Move Is Valid.
                 listBox1.Items.Add(Game.Moves[Game.Moves.Count - 1]); 
             }
