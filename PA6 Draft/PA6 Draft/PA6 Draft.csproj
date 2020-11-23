@@ -119,6 +119,9 @@
     <Content Include="Resources\MOVE.WAV">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\resurrect.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\slayer.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

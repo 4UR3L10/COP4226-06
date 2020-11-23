@@ -248,18 +248,22 @@ namespace PA6_Draft
         {
             if (!IsCheck(whiteKing))
                 return false;
+
             foreach(Move move in AllLegalMoves(whiteKing))
             {
                 if (TryLegalMove(move,whiteKing))
                     return false;
             }
-            SoundPlayer soundPlayer = new SoundPlayer(@"Resources\slayer.wav");
-            soundPlayer.Load();
-            soundPlayer.Play();
             return true; 
         }
         private bool IsStalemate(bool whiteKing)
         {
+            if (!IsCheck(whiteKing) && AllLegalMoves(whiteKing).Count == 0)
+            {
+                SoundPlayer soundPlayer = new SoundPlayer(@"Resources\resurrect.wav");
+                soundPlayer.Load();
+                soundPlayer.Play();
+            }
             return !IsCheck(whiteKing) && AllLegalMoves(whiteKing).Count == 0;
         }
         private bool IsCheck(bool whiteKing)
@@ -279,7 +283,13 @@ namespace PA6_Draft
             foreach (Move move in all)//for every legal move of the opponent
             {
                 if (move.X2 == kingSquare.File - 'a' && move.Y2 == 8 - kingSquare.Rank)//if move threatens the king
+                {
+                    SoundPlayer soundPlayer = new SoundPlayer(@"Resources\slayer.wav");
+                    soundPlayer.Load();
+                    soundPlayer.Play();
                     return true;
+                }
+                    
             }
             return false;
         }
