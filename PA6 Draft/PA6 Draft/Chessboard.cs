@@ -51,6 +51,10 @@ namespace PA6_Draft
             Dropped = new Square(0, 'z');
             Board.Image = new Bitmap(512,512);
             Board_Paint(null,null);
+
+            // Initializing the Timers.
+            this.Player2Time.Text = Game.BlackTimeLimit;
+            this.Player1Time.Text = Game.WhiteTimeLimit;
         }
         private object Game_Promote(Move move)
         {
@@ -167,9 +171,18 @@ namespace PA6_Draft
                     Game.WLimit = 0;
                     MainTimer.Stop();
                     MessageBox.Show(Game.Player1Name + " lost by timeout");
+
+                    // Data Binding - Updating the Time When Lose - White.
+                    this.Player1Time.Text = Game.WhiteTimeLimit;
                 }
-                else  
+                else
+                {
                     Game.WhiteTimeLimit = Game.TimeToString(Game.WLimit -= MainTimer.Interval);
+
+                    // Data Binding - Updating the Time When Ticking - White.
+                    this.Player1Time.Text = Game.WhiteTimeLimit;
+                }
+                    
             }
             else
             {
@@ -179,9 +192,17 @@ namespace PA6_Draft
                     Game.BLimit = 0;
                     MainTimer.Stop();
                     MessageBox.Show(Game.Player2Name + " lost by timeout");
+
+                    // Data Binding - Updating the Time When Lose - Black.
+                    this.Player2Time.Text = Game.BlackTimeLimit;
                 }
                 else
+                {
                     Game.BlackTimeLimit = Game.TimeToString(Game.BLimit -= MainTimer.Interval);
+
+                    // Data Binding - Updating the Time When Ticking - White.
+                    this.Player2Time.Text = Game.BlackTimeLimit;
+                }
             }
         }
 
