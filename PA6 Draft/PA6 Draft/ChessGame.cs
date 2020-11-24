@@ -103,7 +103,12 @@ namespace PA6_Draft
             }
             if (CapturedPiece != Piece.NONE)
             {
-                if(MovedPiece==Piece.BPAWN || MovedPiece==Piece.WPAWN)
+                // Makes Sound When Piece is captured.
+                SoundPlayer soundPlayer = new SoundPlayer(@"Resources\capture.wav");
+                soundPlayer.Load();
+                soundPlayer.Play();
+
+                if (MovedPiece==Piece.BPAWN || MovedPiece==Piece.WPAWN)
                     result += (char)('a' + X1);
                 result += "x";
             }
@@ -244,24 +249,27 @@ namespace PA6_Draft
             SoundPlayer soundPlayer = new SoundPlayer(@"Resources\startgame.wav");
             soundPlayer.Load();
             soundPlayer.Play();
-
         }
         private bool IsCheckmate(bool whiteKing)
         {
             if (!IsCheck(whiteKing))
                 return false;
+
             foreach(Move move in AllLegalMoves(whiteKing))
             {
                 if (TryLegalMove(move,whiteKing))
                     return false;
             }
-            SoundPlayer soundPlayer = new SoundPlayer(@"Resources\slayer.wav");
-            soundPlayer.Load();
-            soundPlayer.Play();
             return true; 
         }
         private bool IsStalemate(bool whiteKing)
         {
+            if (!IsCheck(whiteKing) && AllLegalMoves(whiteKing).Count == 0)
+            {
+                SoundPlayer soundPlayer = new SoundPlayer(@"Resources\resurrect.wav");
+                soundPlayer.Load();
+                soundPlayer.Play();
+            }
             return !IsCheck(whiteKing) && AllLegalMoves(whiteKing).Count == 0;
         }
         private bool IsCheck(bool whiteKing)
@@ -281,7 +289,13 @@ namespace PA6_Draft
             foreach (Move move in all)//for every legal move of the opponent
             {
                 if (move.X2 == kingSquare.File - 'a' && move.Y2 == 8 - kingSquare.Rank)//if move threatens the king
+                {
+                    SoundPlayer soundPlayer = new SoundPlayer(@"Resources\slayer.wav");
+                    soundPlayer.Load();
+                    soundPlayer.Play();
                     return true;
+                }
+                    
             }
             return false;
         }
@@ -789,7 +803,12 @@ namespace PA6_Draft
             EnPassant = readyForEnPassant ? Board[x2][y2] : null;
             CastlePermissions = newCastlePermissions;
             if(WhiteTurn)
+            {
                 WhiteTimeLimit = TimeToString(WLimit += Increment);
+                //MessageBox.Show("The value of time Limit is : " + WhiteTimeLimit);
+                
+            }
+                
             else
                 BlackTimeLimit = TimeToString(BLimit += Increment);
             move.Checkmate = IsCheckmate(!WhiteTurn);
