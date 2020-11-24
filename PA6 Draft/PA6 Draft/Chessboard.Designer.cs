@@ -60,24 +60,26 @@
             this.Player2Time.BackColor = System.Drawing.SystemColors.Menu;
             this.Player2Time.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Player2Time.Enabled = false;
-            this.Player2Time.Font = new System.Drawing.Font("Miriam", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Player2Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Player2Time.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.Player2Time.Location = new System.Drawing.Point(473, 11);
             this.Player2Time.Name = "Player2Time";
-            this.Player2Time.Size = new System.Drawing.Size(51, 17);
+            this.Player2Time.Size = new System.Drawing.Size(51, 19);
             this.Player2Time.TabIndex = 1;
+            this.Player2Time.TextChanged += new System.EventHandler(this.Player2Time_TextChanged);
             // 
             // Player1Time
             // 
             this.Player1Time.BackColor = System.Drawing.SystemColors.Menu;
             this.Player1Time.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Player1Time.Enabled = false;
-            this.Player1Time.Font = new System.Drawing.Font("Miriam", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Player1Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Player1Time.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.Player1Time.Location = new System.Drawing.Point(473, 555);
             this.Player1Time.Name = "Player1Time";
-            this.Player1Time.Size = new System.Drawing.Size(51, 17);
+            this.Player1Time.Size = new System.Drawing.Size(51, 19);
             this.Player1Time.TabIndex = 2;
+            this.Player1Time.TextChanged += new System.EventHandler(this.Player1Time_TextChanged);
             // 
             // listBox1
             // 
@@ -102,11 +104,11 @@
             this.Player2.BackColor = System.Drawing.SystemColors.Menu;
             this.Player2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Player2.Enabled = false;
-            this.Player2.Font = new System.Drawing.Font("Miriam", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Player2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Player2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.Player2.Location = new System.Drawing.Point(12, 11);
             this.Player2.Name = "Player2";
-            this.Player2.Size = new System.Drawing.Size(161, 17);
+            this.Player2.Size = new System.Drawing.Size(161, 19);
             this.Player2.TabIndex = 10;
             // 
             // Player1
@@ -114,11 +116,11 @@
             this.Player1.BackColor = System.Drawing.SystemColors.Menu;
             this.Player1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Player1.Enabled = false;
-            this.Player1.Font = new System.Drawing.Font("Miriam", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Player1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Player1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.Player1.Location = new System.Drawing.Point(12, 555);
             this.Player1.Name = "Player1";
-            this.Player1.Size = new System.Drawing.Size(161, 17);
+            this.Player1.Size = new System.Drawing.Size(161, 19);
             this.Player1.TabIndex = 11;
             // 
             // Chessboard

@@ -242,7 +242,6 @@ namespace PA6_Draft
             SoundPlayer soundPlayer = new SoundPlayer(@"Resources\startgame.wav");
             soundPlayer.Load();
             soundPlayer.Play();
-
         }
         private bool IsCheckmate(bool whiteKing)
         {
@@ -797,7 +796,12 @@ namespace PA6_Draft
             EnPassant = readyForEnPassant ? Board[x2][y2] : null;
             CastlePermissions = newCastlePermissions;
             if(WhiteTurn)
+            {
                 WhiteTimeLimit = TimeToString(WLimit += Increment);
+                //MessageBox.Show("The value of time Limit is : " + WhiteTimeLimit);
+                
+            }
+                
             else
                 BlackTimeLimit = TimeToString(BLimit += Increment);
             move.Checkmate = IsCheckmate(!WhiteTurn);

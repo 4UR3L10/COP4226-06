@@ -113,6 +113,9 @@
     <Content Include="Resources\capture.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\checkKing.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\chess-.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

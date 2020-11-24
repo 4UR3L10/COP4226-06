@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -58,7 +59,8 @@ namespace PA6_Draft
         }
         private object Game_Promote(Move move)
         {
-            return ((int)move.MovedPiece % 2 == 0) ? Promotion.BQUEEN : Promotion.WQUEEN;
+            //return ((int)move.MovedPiece % 2 == 0) ? Promotion.BQUEEN : Promotion.WQUEEN;
+            return ((int)move.MovedPiece % 2 == 0) ? Promotion.BBISHOP : Promotion.WBISHOP;
         }
         private void Board_MouseDown(object sender, MouseEventArgs e)
         {
@@ -213,6 +215,27 @@ namespace PA6_Draft
         private void Chessboard_FormClosed(object sender, FormClosedEventArgs e)
         {
             MainTimer.Stop();
+        }
+
+        private void Player1Time_TextChanged(object sender, EventArgs e)
+        {
+            if (Game.WhiteTimeLimit == "0:10")
+            {
+                SoundPlayer soundPlayer = new SoundPlayer(@"Resources\resurrect.wav");
+                soundPlayer.Load();
+                soundPlayer.Play();
+            }
+
+        }
+
+        private void Player2Time_TextChanged(object sender, EventArgs e)
+        {
+            if (Game.BlackTimeLimit == "0:10")
+            {
+                SoundPlayer soundPlayer = new SoundPlayer(@"Resources\resurrect.wav");
+                soundPlayer.Load();
+                soundPlayer.Play();
+            }
         }
     }
 }
