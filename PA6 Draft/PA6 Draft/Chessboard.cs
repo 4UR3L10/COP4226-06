@@ -63,8 +63,25 @@ namespace PA6_Draft
         }
         private object Game_Promote(Move move)
         {
-            //return ((int)move.MovedPiece % 2 == 0) ? Promotion.BQUEEN : Promotion.WQUEEN;
+            PromotionForm frm = new PromotionForm();
+            frm.ShowDialog();
+            
+            switch (frm.piece)
+            {
+
+                case "Queen":
+                    return ((int)move.MovedPiece % 2 == 0) ? Promotion.BQUEEN : Promotion.WQUEEN;
+                case "Bishop":
+                    return ((int)move.MovedPiece % 2 == 0) ? Promotion.BBISHOP : Promotion.WBISHOP;
+                case "Rook":
+                    return ((int)move.MovedPiece % 2 == 0) ? Promotion.BROOK : Promotion.WROOK;
+                case "Knight":
+                    return ((int)move.MovedPiece % 2 == 0) ? Promotion.BKNIGHT : Promotion.WKNIGHT;
+                case "default":
+                    return ((int)move.MovedPiece % 2 == 0) ? Promotion.BQUEEN : Promotion.WQUEEN;
+            }
             return ((int)move.MovedPiece % 2 == 0) ? Promotion.BBISHOP : Promotion.WBISHOP;
+
         }
         private void Board_MouseDown(object sender, MouseEventArgs e)
         {
