@@ -19,6 +19,7 @@ namespace PA6_Draft
         {
             InitializeComponent();
             comboBoxPromotion.SelectedItem = comboBoxPromotion.Items[0];
+            piece = comboBoxPromotion.Items[0].ToString();
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
