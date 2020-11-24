@@ -103,7 +103,12 @@ namespace PA6_Draft
             }
             if (CapturedPiece != Piece.NONE)
             {
-                if(MovedPiece==Piece.BPAWN || MovedPiece==Piece.WPAWN)
+                // Makes Sound When Piece is captured.
+                SoundPlayer soundPlayer = new SoundPlayer(@"Resources\capture.wav");
+                soundPlayer.Load();
+                soundPlayer.Play();
+
+                if (MovedPiece==Piece.BPAWN || MovedPiece==Piece.WPAWN)
                     result += (char)('a' + X1);
                 result += "x";
             }
